@@ -3,7 +3,7 @@
 <title>Static Call Graph - [..\..\Output\Template.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image ..\..\Output\Template.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Thu Jun 27 16:57:24 2019
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5050106: Last Updated: Wed Aug 07 11:39:17 2019
 <BR><P>
 <H3>Maximum Stack Usage =        296 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -527,8 +527,8 @@ Global Symbols
 <P><STRONG><a name="[df]"></a>_float_epilogue</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, fepilogue.o(.text), UNUSED)
 
 <P><STRONG><a name="[7a]"></a>_double_round</STRONG> (Thumb, 30 bytes, Stack size 8 bytes, depilogue.o(.text), UNUSED)
-<BR><BR>[Called By]<UL><LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
+<BR><BR>[Called By]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_epilogue
+<LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
 </UL>
 
 <P><STRONG><a name="[79]"></a>_double_epilogue</STRONG> (Thumb, 156 bytes, Stack size 32 bytes, depilogue.o(.text), UNUSED)
@@ -536,8 +536,8 @@ Global Symbols
 <LI><a href="#[7f]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_llsl
 <LI><a href="#[7a]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_double_round
 </UL>
-<BR>[Called By]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ul2d
+<BR>[Called By]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ul2d
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 </UL>
 
 <P><STRONG><a name="[7d]"></a>__ctype_lookup</STRONG> (Thumb, 34 bytes, Stack size 0 bytes, ctype_c.o(.text))
@@ -609,6 +609,7 @@ Global Symbols
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Error_response
 <LI><a href="#[cb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VAN_TxCmd
 <LI><a href="#[ca]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VAN_TransData
+<LI><a href="#[c8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VAN_Init
 <LI><a href="#[bb]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SPD_Init
 <LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CPT_Init
 </UL>
@@ -1142,15 +1143,16 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[b4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Modbus_init
 </UL>
 
-<P><STRONG><a name="[c8]"></a>VAN_Init</STRONG> (Thumb, 26 bytes, Stack size 8 bytes, usart_van.o(i.VAN_Init))
+<P><STRONG><a name="[c8]"></a>VAN_Init</STRONG> (Thumb, 46 bytes, Stack size 8 bytes, usart_van.o(i.VAN_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 104<LI>Call Chain = VAN_Init &rArr; VAN_Config &rArr; USART_Init &rArr; RCC_GetClocksFreq
 </UL>
 <BR>[Calls]<UL><LI><a href="#[c6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;VAN_Config
+<LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
 </UL>
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c9]"></a>VAN_Task</STRONG> (Thumb, 150 bytes, Stack size 16 bytes, usart_van.o(i.VAN_Task))
+<P><STRONG><a name="[c9]"></a>VAN_Task</STRONG> (Thumb, 214 bytes, Stack size 16 bytes, usart_van.o(i.VAN_Task))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = VAN_Task
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8e]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GetCurTicks
@@ -1158,7 +1160,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ca]"></a>VAN_TransData</STRONG> (Thumb, 108 bytes, Stack size 272 bytes, usart_van.o(i.VAN_TransData))
+<P><STRONG><a name="[ca]"></a>VAN_TransData</STRONG> (Thumb, 114 bytes, Stack size 272 bytes, usart_van.o(i.VAN_TransData))
 <BR><BR>[Stack]<UL><LI>Max Depth = 296<LI>Call Chain = VAN_TransData &rArr; Usart_SendBytes
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart_SendBytes
@@ -1167,8 +1169,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[cb]"></a>VAN_TxCmd</STRONG> (Thumb, 100 bytes, Stack size 16 bytes, usart_van.o(i.VAN_TxCmd))
-<BR><BR>[Stack]<UL><LI>Max Depth = 40<LI>Call Chain = VAN_TxCmd &rArr; Usart_SendBytes
+<P><STRONG><a name="[cb]"></a>VAN_TxCmd</STRONG> (Thumb, 146 bytes, Stack size 24 bytes, usart_van.o(i.VAN_TxCmd))
+<BR><BR>[Stack]<UL><LI>Max Depth = 48<LI>Call Chain = VAN_TxCmd &rArr; Usart_SendBytes
 </UL>
 <BR>[Calls]<UL><LI><a href="#[98]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Usart_SendBytes
 <LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;CRC16
@@ -1396,9 +1398,9 @@ Local Symbols
 <BR>[Address Reference Count : 1]<UL><LI> printf1.o(i.__0sprintf$1)
 </UL>
 <P><STRONG><a name="[71]"></a>_fp_value</STRONG> (Thumb, 256 bytes, Stack size 56 bytes, scanf_fp.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
+<BR><BR>[Calls]<UL><LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ul2d
+<LI><a href="#[73]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_dmul
 <LI><a href="#[74]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ddiv
-<LI><a href="#[72]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__aeabi_ul2d
 </UL>
 <BR>[Called By]<UL><LI><a href="#[75]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;_scanf_really_real
 </UL>

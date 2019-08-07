@@ -34,6 +34,9 @@
 #define VAN_COM_TICK 141
 #define VAN_COM_FAIL 151
 #define VAN_COM_SUCS 161
+#define VLEN_COM_TICK 145
+#define VLEN_COM_FAIL 155
+#define VLEN_COM_SUCS 165
 
 void VAN_Init(void);
 void VAN_TxCmd(void);

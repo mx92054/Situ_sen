@@ -11,13 +11,16 @@ extern u16 wReg[];
 extern u8 bChanged;
 
 uint8_t VAN_frame[8] = {VAN_STATION, 0x03, 0x00, VAN_START_ADR, 0x00, VAN_LENGTH, 0x00, 0x00};
+uint8_t VLEN_frame[8] = {0x02, 0x03, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00};
 u8 VAN_buffer[256];
 u8 VAN_curptr;
 u8 VAN_bRecv;
 u8 VAN_frame_len = 85;
 
-u32 ulVANTicks = 0;
+u32 ulVANTicks1 = 0;
+u32 ulVANTicks2 = 0;
 u8 bFirst_VAN = 0 ;
+u32 uVCur = 0;
 //-------------------------------------------------------------------------------
 //	@brief	中断初始化
 //	@param	None
@@ -111,11 +114,17 @@ static void VAN_Config(int baud)
 //-------------------------------------------------------------------------------
 void VAN_Init(void)
 {
+	u16 uCRC;
+
 	VAN_Config(VAN_USART_BAUDRATE);
 
 	VAN_curptr = 0;
 	VAN_bRecv = 0;
 	wReg[150] = 0;
+
+	uCRC = CRC16(VLEN_frame, 6);
+	VLEN_frame[6] = uCRC & 0x00FF;
+	VLEN_frame[7] = (uCRC & 0xFF00) >> 8;	
 }
 
 //-------------------------------------------------------------------------------
@@ -128,7 +137,11 @@ void VAN_TxCmd(void)
 	u16 uCRC;
 
 	if (VAN_bRecv == 1) //如果当前未完成接收，则通信错误计数器递增
-		wReg[VAN_COM_FAIL]++;
+		if ( uVCur == 1 )
+			wReg[VAN_COM_FAIL]++;
+		else
+			wReg[VLEN_COM_FAIL]++;
+		
 
 	if ( bFirst_VAN )
 	{
@@ -151,7 +164,19 @@ void VAN_TxCmd(void)
 
 	VAN_curptr = 0;
 	VAN_bRecv = 1;
-	Usart_SendBytes(USART_VAN, VAN_frame, 8);
+
+	if ( uVCur == 0)
+	{
+		VAN_frame_len = 2 * VAN_LENGTH + 5;
+		Usart_SendBytes(USART_VAN, VAN_frame, 8);
+		uVCur = 1;
+	}
+	else
+	{
+		VAN_frame_len = 2 * 2 + 5;
+		Usart_SendBytes(USART_VAN, VLEN_frame, 8);
+		uVCur = 0;
+	}
 }
 
 /**
@@ -178,6 +203,7 @@ void VAN_TransData(void)
 		buffer[8 + 2 * i] = (u8)(wReg[100 + i] & 0x00FF);
 	}
 
+	VAN_frame_len = 8 ;
 	uCRC = CRC16(buffer, 47);
 	buffer[47] = uCRC & 0x00FF;
 	buffer[48] = (uCRC & 0xFF00) >> 8;
@@ -197,47 +223,65 @@ void VAN_Task(void)
 	if (VAN_curptr < VAN_frame_len)
 		return;
 
-	if (VAN_buffer[0] != VAN_STATION)
-	 	return;
-	
-	//is write reg
-	if ( VAN_buffer[1] == 0x10)
+	if (VAN_buffer[0] == VAN_STATION)
 	{
-		wReg[112] = 0;
-		wReg[113] = 0;
-		bChanged = 0;
-		return;
-	}
+		//is write reg		
+		if ( VAN_buffer[1] == 0x10)
+		{
+			wReg[112] = 0;
+			wReg[113] = 0;
+			bChanged = 0;
+			return;
+		}
 
-	if ( VAN_buffer[1] != 0x03 )
-		return;
-
-	if ( bFirst_VAN )   //first read 
-	{		
-		if (VAN_buffer[2] != 40 )
-			return ;
-
-		for (i = 0; i < 20; i++)
-			wReg[100 + i] = VAN_buffer[2 * i + 3] << 0x08 | VAN_buffer[2 * i + 4];
-
-		bFirst_VAN = 0 ;
-	}
-	else    //not first read
-	{
-		if ( VAN_buffer[2] != 2 * VAN_LENGTH)
+		if ( VAN_buffer[1] != 0x03 )
 			return;
 
-		for (i = 0; i < VAN_LENGTH; i++)
-			wReg[VAN_SAVE_ADR + i] = VAN_buffer[2 * i + 3] << 0x08 | VAN_buffer[2 * i + 4];
-	}
-	
-	tick = GetCurTicks();
-	wReg[VAN_COM_TICK] = tick - ulVANTicks;
-	ulVANTicks = tick;
+		if ( bFirst_VAN )   //first read 
+		{		
+			if (VAN_buffer[2] != 40 )
+				return ;
 
-	wReg[VAN_COM_SUCS]++;
-	VAN_curptr = 0;
-	VAN_bRecv = 0;
+			for (i = 0; i < 20; i++)
+				wReg[100 + i] = VAN_buffer[2 * i + 3] << 0x08 | VAN_buffer[2 * i + 4];
+
+			bFirst_VAN = 0 ;
+		}
+		else    //not first read
+		{
+			if ( VAN_buffer[2] != 2 * VAN_LENGTH)
+				return;
+
+			for (i = 0; i < VAN_LENGTH; i++)
+				wReg[VAN_SAVE_ADR + i] = VAN_buffer[2 * i + 3] << 0x08 | VAN_buffer[2 * i + 4];
+		}
+		
+		tick = GetCurTicks();
+		wReg[VAN_COM_TICK] = tick - ulVANTicks1;
+		ulVANTicks1 = tick;
+
+		wReg[VAN_COM_SUCS]++;
+		VAN_curptr = 0;
+		VAN_bRecv = 0;
+		return;
+	}
+
+	if ( VAN_buffer[0] == 0x02 )
+	{
+		if (VAN_buffer[2] != 4 )
+			return;
+
+		for (i = 0; i < 2; i++)
+			wReg[87 + i] = VAN_buffer[2 * i + 3] << 0x08 | VAN_buffer[2 * i + 4];
+			
+		tick = GetCurTicks();
+		wReg[VLEN_COM_TICK] = tick - ulVANTicks2;
+		ulVANTicks2 = tick;
+
+		wReg[VLEN_COM_SUCS]++;
+		VAN_curptr = 0;
+		VAN_bRecv = 0;
+	}
 }
 
 //-------------------------------------------------------------------------------

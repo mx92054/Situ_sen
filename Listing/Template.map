@@ -389,6 +389,7 @@ Section Cross References
     usart_van.o(i.VAN_Config) refers to stm32f4xx_usart.o(i.USART_ITConfig) for USART_ITConfig
     usart_van.o(i.VAN_Config) refers to stm32f4xx_usart.o(i.USART_Cmd) for USART_Cmd
     usart_van.o(i.VAN_Init) refers to usart_van.o(i.VAN_Config) for VAN_Config
+    usart_van.o(i.VAN_Init) refers to modbus_svr.o(i.CRC16) for CRC16
     usart_van.o(i.VAN_Init) refers to usart_van.o(.data) for .data
     usart_van.o(i.VAN_Init) refers to modbus_svr.o(.bss) for wReg
     usart_van.o(i.VAN_NVIC_Configuration) refers to misc.o(i.NVIC_PriorityGroupConfig) for NVIC_PriorityGroupConfig
@@ -401,6 +402,7 @@ Section Cross References
     usart_van.o(i.VAN_TransData) refers to modbus_svr.o(i.CRC16) for CRC16
     usart_van.o(i.VAN_TransData) refers to modbus_svr.o(i.Usart_SendBytes) for Usart_SendBytes
     usart_van.o(i.VAN_TransData) refers to modbus_svr.o(.bss) for wReg
+    usart_van.o(i.VAN_TransData) refers to usart_van.o(.data) for .data
     usart_van.o(i.VAN_TxCmd) refers to modbus_svr.o(i.CRC16) for CRC16
     usart_van.o(i.VAN_TxCmd) refers to modbus_svr.o(i.Usart_SendBytes) for Usart_SendBytes
     usart_van.o(i.VAN_TxCmd) refers to usart_van.o(.data) for .data
@@ -1929,24 +1931,24 @@ Image Symbol Table
     i.VAN_Config                             0x0800254c   Section        0  usart_van.o(i.VAN_Config)
     VAN_Config                               0x0800254d   Thumb Code   156  usart_van.o(i.VAN_Config)
     i.VAN_Init                               0x080025f0   Section        0  usart_van.o(i.VAN_Init)
-    i.VAN_NVIC_Configuration                 0x08002614   Section        0  usart_van.o(i.VAN_NVIC_Configuration)
-    VAN_NVIC_Configuration                   0x08002615   Thumb Code    40  usart_van.o(i.VAN_NVIC_Configuration)
-    i.VAN_Task                               0x0800263c   Section        0  usart_van.o(i.VAN_Task)
-    i.VAN_TransData                          0x080026e4   Section        0  usart_van.o(i.VAN_TransData)
-    i.VAN_TxCmd                              0x08002758   Section        0  usart_van.o(i.VAN_TxCmd)
-    i.__0sprintf$1                           0x080027c8   Section        0  printf1.o(i.__0sprintf$1)
-    i.__scatterload_copy                     0x080027f0   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x080027fe   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x08002800   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._is_digit                              0x0800280e   Section        0  scanf_fp.o(i._is_digit)
-    i._printf_core                           0x0800281c   Section        0  printf1.o(i._printf_core)
-    _printf_core                             0x0800281d   Thumb Code   336  printf1.o(i._printf_core)
-    i._sputc                                 0x08002970   Section        0  printf1.o(i._sputc)
-    _sputc                                   0x08002971   Thumb Code    10  printf1.o(i._sputc)
-    i.main                                   0x0800297c   Section        0  main.o(i.main)
-    .constdata                               0x08002a54   Section      512  modbus_svr.o(.constdata)
-    wCRCTable                                0x08002a54   Data         512  modbus_svr.o(.constdata)
-    .constdata                               0x08002c54   Section       64  ctype_c.o(.constdata)
+    i.VAN_NVIC_Configuration                 0x08002628   Section        0  usart_van.o(i.VAN_NVIC_Configuration)
+    VAN_NVIC_Configuration                   0x08002629   Thumb Code    40  usart_van.o(i.VAN_NVIC_Configuration)
+    i.VAN_Task                               0x08002650   Section        0  usart_van.o(i.VAN_Task)
+    i.VAN_TransData                          0x08002738   Section        0  usart_van.o(i.VAN_TransData)
+    i.VAN_TxCmd                              0x080027b8   Section        0  usart_van.o(i.VAN_TxCmd)
+    i.__0sprintf$1                           0x08002858   Section        0  printf1.o(i.__0sprintf$1)
+    i.__scatterload_copy                     0x08002880   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x0800288e   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x08002890   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._is_digit                              0x0800289e   Section        0  scanf_fp.o(i._is_digit)
+    i._printf_core                           0x080028ac   Section        0  printf1.o(i._printf_core)
+    _printf_core                             0x080028ad   Thumb Code   336  printf1.o(i._printf_core)
+    i._sputc                                 0x08002a00   Section        0  printf1.o(i._sputc)
+    _sputc                                   0x08002a01   Thumb Code    10  printf1.o(i._sputc)
+    i.main                                   0x08002a0c   Section        0  main.o(i.main)
+    .constdata                               0x08002ae4   Section      512  modbus_svr.o(.constdata)
+    wCRCTable                                0x08002ae4   Data         512  modbus_svr.o(.constdata)
+    .constdata                               0x08002ce4   Section       64  ctype_c.o(.constdata)
     .data                                    0x20000000   Section       20  system_stm32f4xx.o(.data)
     .data                                    0x20000014   Section       16  stm32f4xx_rcc.o(.data)
     APBAHBPrescTable                         0x20000014   Data          16  stm32f4xx_rcc.o(.data)
@@ -1955,18 +1957,18 @@ Image Symbol Table
     TimingDelay                              0x20000038   Data           4  systick.o(.data)
     nCurTicks                                0x2000003c   Data           4  systick.o(.data)
     .data                                    0x20000040   Section       16  usart_cpt.o(.data)
-    .data                                    0x20000050   Section       16  usart_van.o(.data)
-    .data                                    0x20000060   Section       16  usart_spd.o(.data)
-    .data                                    0x20000070   Section       12  usart_alt.o(.data)
-    .data                                    0x2000007c   Section       36  usart_dpt.o(.data)
-    .bss                                     0x200000a0   Section     1312  modbus_svr.o(.bss)
-    .bss                                     0x200005c0   Section       50  systick.o(.bss)
-    .bss                                     0x200005f2   Section      256  usart_cpt.o(.bss)
-    .bss                                     0x200006f2   Section      256  usart_van.o(.bss)
-    .bss                                     0x200007f4   Section      308  usart_spd.o(.bss)
-    .bss                                     0x20000928   Section      256  usart_alt.o(.bss)
-    .bss                                     0x20000a28   Section      256  usart_dpt.o(.bss)
-    STACK                                    0x20000b28   Section     1024  startup_stm32f429_439xx.o(STACK)
+    .data                                    0x20000050   Section       32  usart_van.o(.data)
+    .data                                    0x20000070   Section       16  usart_spd.o(.data)
+    .data                                    0x20000080   Section       12  usart_alt.o(.data)
+    .data                                    0x2000008c   Section       36  usart_dpt.o(.data)
+    .bss                                     0x200000b0   Section     1312  modbus_svr.o(.bss)
+    .bss                                     0x200005d0   Section       50  systick.o(.bss)
+    .bss                                     0x20000602   Section      256  usart_cpt.o(.bss)
+    .bss                                     0x20000702   Section      256  usart_van.o(.bss)
+    .bss                                     0x20000804   Section      308  usart_spd.o(.bss)
+    .bss                                     0x20000938   Section      256  usart_alt.o(.bss)
+    .bss                                     0x20000a38   Section      256  usart_dpt.o(.bss)
+    STACK                                    0x20000b38   Section     1024  startup_stm32f429_439xx.o(STACK)
 
     Global Symbols
 
@@ -2225,21 +2227,21 @@ Image Symbol Table
     Usart_SendByte                           0x080024df   Thumb Code    24  modbus_svr.o(i.Usart_SendByte)
     Usart_SendBytes                          0x080024f7   Thumb Code    46  modbus_svr.o(i.Usart_SendBytes)
     Usart_SendString                         0x08002525   Thumb Code    38  modbus_svr.o(i.Usart_SendString)
-    VAN_Init                                 0x080025f1   Thumb Code    26  usart_van.o(i.VAN_Init)
-    VAN_Task                                 0x0800263d   Thumb Code   150  usart_van.o(i.VAN_Task)
-    VAN_TransData                            0x080026e5   Thumb Code   108  usart_van.o(i.VAN_TransData)
-    VAN_TxCmd                                0x08002759   Thumb Code   100  usart_van.o(i.VAN_TxCmd)
-    __0sprintf$1                             0x080027c9   Thumb Code    34  printf1.o(i.__0sprintf$1)
-    __1sprintf$1                             0x080027c9   Thumb Code     0  printf1.o(i.__0sprintf$1)
-    __2sprintf                               0x080027c9   Thumb Code     0  printf1.o(i.__0sprintf$1)
-    __scatterload_copy                       0x080027f1   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x080027ff   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x08002801   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    _is_digit                                0x0800280f   Thumb Code    14  scanf_fp.o(i._is_digit)
-    main                                     0x0800297d   Thumb Code   196  main.o(i.main)
-    __ctype_categories                       0x08002c54   Data          64  ctype_c.o(.constdata)
-    Region$$Table$$Base                      0x08002c94   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x08002cb4   Number         0  anon$$obj.o(Region$$Table)
+    VAN_Init                                 0x080025f1   Thumb Code    46  usart_van.o(i.VAN_Init)
+    VAN_Task                                 0x08002651   Thumb Code   214  usart_van.o(i.VAN_Task)
+    VAN_TransData                            0x08002739   Thumb Code   114  usart_van.o(i.VAN_TransData)
+    VAN_TxCmd                                0x080027b9   Thumb Code   146  usart_van.o(i.VAN_TxCmd)
+    __0sprintf$1                             0x08002859   Thumb Code    34  printf1.o(i.__0sprintf$1)
+    __1sprintf$1                             0x08002859   Thumb Code     0  printf1.o(i.__0sprintf$1)
+    __2sprintf                               0x08002859   Thumb Code     0  printf1.o(i.__0sprintf$1)
+    __scatterload_copy                       0x08002881   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x0800288f   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x08002891   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    _is_digit                                0x0800289f   Thumb Code    14  scanf_fp.o(i._is_digit)
+    main                                     0x08002a0d   Thumb Code   196  main.o(i.main)
+    __ctype_categories                       0x08002ce4   Data          64  ctype_c.o(.constdata)
+    Region$$Table$$Base                      0x08002d24   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x08002d44   Number         0  anon$$obj.o(Region$$Table)
     SystemCoreClock                          0x20000000   Data           4  system_stm32f4xx.o(.data)
     AHBPrescTable                            0x20000004   Data          16  system_stm32f4xx.o(.data)
     bSaved                                   0x20000024   Data           1  modbus_svr.o(.data)
@@ -2261,40 +2263,43 @@ Image Symbol Table
     bFirst_VAN                               0x20000051   Data           1  usart_van.o(.data)
     VAN_curptr                               0x20000052   Data           1  usart_van.o(.data)
     VAN_bRecv                                0x20000053   Data           1  usart_van.o(.data)
-    ulVANTicks                               0x20000054   Data           4  usart_van.o(.data)
-    VAN_frame                                0x20000058   Data           8  usart_van.o(.data)
-    SPD_frame_len                            0x20000060   Data           1  usart_spd.o(.data)
-    SPD_curptr                               0x20000061   Data           1  usart_spd.o(.data)
-    SPD_bRecv                                0x20000062   Data           1  usart_spd.o(.data)
-    ulSPDTicks                               0x20000064   Data           4  usart_spd.o(.data)
-    SPD_frame                                0x20000068   Data           8  usart_spd.o(.data)
-    ALT_curptr                               0x20000070   Data           1  usart_alt.o(.data)
-    ALT_bRecv                                0x20000071   Data           1  usart_alt.o(.data)
-    ulALTTicks                               0x20000074   Data           4  usart_alt.o(.data)
-    fAlimeter                                0x20000078   Data           4  usart_alt.o(.data)
-    DPT_curptr                               0x2000007c   Data           1  usart_dpt.o(.data)
-    DPT_bRecv                                0x2000007d   Data           1  usart_dpt.o(.data)
-    ulDPTTicks                               0x20000080   Data           4  usart_dpt.o(.data)
-    ulFailTicks                              0x20000084   Data           4  usart_dpt.o(.data)
-    fDepth                                   0x20000088   Data           4  usart_dpt.o(.data)
-    fPres                                    0x2000008c   Data           4  usart_dpt.o(.data)
-    fTemp                                    0x20000090   Data           4  usart_dpt.o(.data)
-    fHead                                    0x20000094   Data           4  usart_dpt.o(.data)
-    fPitch                                   0x20000098   Data           4  usart_dpt.o(.data)
-    fRoll                                    0x2000009c   Data           4  usart_dpt.o(.data)
-    wReg                                     0x200000a0   Data         400  modbus_svr.o(.bss)
-    coils                                    0x20000230   Data         400  modbus_svr.o(.bss)
-    buffer                                   0x200003c0   Data         512  modbus_svr.o(.bss)
-    TimePre                                  0x200005c0   Data          20  systick.o(.bss)
-    TimeCur                                  0x200005d4   Data          20  systick.o(.bss)
-    TimerFlag                                0x200005e8   Data          10  systick.o(.bss)
-    cpt_buffer                               0x200005f2   Data         256  usart_cpt.o(.bss)
-    VAN_buffer                               0x200006f2   Data         256  usart_van.o(.bss)
-    SPD_buffer                               0x200007f4   Data         256  usart_spd.o(.bss)
-    qspd                                     0x200008f4   Data          52  usart_spd.o(.bss)
-    ALT_buffer                               0x20000928   Data         256  usart_alt.o(.bss)
-    DPT_buffer                               0x20000a28   Data         256  usart_dpt.o(.bss)
-    __initial_sp                             0x20000f28   Data           0  startup_stm32f429_439xx.o(STACK)
+    ulVANTicks1                              0x20000054   Data           4  usart_van.o(.data)
+    ulVANTicks2                              0x20000058   Data           4  usart_van.o(.data)
+    uVCur                                    0x2000005c   Data           4  usart_van.o(.data)
+    VAN_frame                                0x20000060   Data           8  usart_van.o(.data)
+    VLEN_frame                               0x20000068   Data           8  usart_van.o(.data)
+    SPD_frame_len                            0x20000070   Data           1  usart_spd.o(.data)
+    SPD_curptr                               0x20000071   Data           1  usart_spd.o(.data)
+    SPD_bRecv                                0x20000072   Data           1  usart_spd.o(.data)
+    ulSPDTicks                               0x20000074   Data           4  usart_spd.o(.data)
+    SPD_frame                                0x20000078   Data           8  usart_spd.o(.data)
+    ALT_curptr                               0x20000080   Data           1  usart_alt.o(.data)
+    ALT_bRecv                                0x20000081   Data           1  usart_alt.o(.data)
+    ulALTTicks                               0x20000084   Data           4  usart_alt.o(.data)
+    fAlimeter                                0x20000088   Data           4  usart_alt.o(.data)
+    DPT_curptr                               0x2000008c   Data           1  usart_dpt.o(.data)
+    DPT_bRecv                                0x2000008d   Data           1  usart_dpt.o(.data)
+    ulDPTTicks                               0x20000090   Data           4  usart_dpt.o(.data)
+    ulFailTicks                              0x20000094   Data           4  usart_dpt.o(.data)
+    fDepth                                   0x20000098   Data           4  usart_dpt.o(.data)
+    fPres                                    0x2000009c   Data           4  usart_dpt.o(.data)
+    fTemp                                    0x200000a0   Data           4  usart_dpt.o(.data)
+    fHead                                    0x200000a4   Data           4  usart_dpt.o(.data)
+    fPitch                                   0x200000a8   Data           4  usart_dpt.o(.data)
+    fRoll                                    0x200000ac   Data           4  usart_dpt.o(.data)
+    wReg                                     0x200000b0   Data         400  modbus_svr.o(.bss)
+    coils                                    0x20000240   Data         400  modbus_svr.o(.bss)
+    buffer                                   0x200003d0   Data         512  modbus_svr.o(.bss)
+    TimePre                                  0x200005d0   Data          20  systick.o(.bss)
+    TimeCur                                  0x200005e4   Data          20  systick.o(.bss)
+    TimerFlag                                0x200005f8   Data          10  systick.o(.bss)
+    cpt_buffer                               0x20000602   Data         256  usart_cpt.o(.bss)
+    VAN_buffer                               0x20000702   Data         256  usart_van.o(.bss)
+    SPD_buffer                               0x20000804   Data         256  usart_spd.o(.bss)
+    qspd                                     0x20000904   Data          52  usart_spd.o(.bss)
+    ALT_buffer                               0x20000938   Data         256  usart_alt.o(.bss)
+    DPT_buffer                               0x20000a38   Data         256  usart_dpt.o(.bss)
+    __initial_sp                             0x20000f38   Data           0  startup_stm32f429_439xx.o(STACK)
 
 
 
@@ -2304,62 +2309,62 @@ Memory Map of the image
 
   Image Entry point : 0x080001ad
 
-  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00002d54, Max: 0x00100000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x08000000, Size: 0x00002df4, Max: 0x00100000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00002cb4, Max: 0x00100000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x08000000, Size: 0x00002d44, Max: 0x00100000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x000001ac   Data   RO            3    RESET               startup_stm32f429_439xx.o
-    0x080001ac   0x00000000   Code   RO         5889  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x080001ac   0x00000004   Code   RO         6159    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x080001b0   0x00000004   Code   RO         6162    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x080001b4   0x00000000   Code   RO         6164    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x080001b4   0x00000000   Code   RO         6166    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x080001b4   0x00000008   Code   RO         6167    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x080001bc   0x00000000   Code   RO         6169    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x080001bc   0x00000000   Code   RO         6171    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x080001bc   0x00000004   Code   RO         6160    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x080001ac   0x00000000   Code   RO         6024  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x080001ac   0x00000004   Code   RO         6294    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x080001b0   0x00000004   Code   RO         6297    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x080001b4   0x00000000   Code   RO         6299    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x080001b4   0x00000000   Code   RO         6301    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x080001b4   0x00000008   Code   RO         6302    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x080001bc   0x00000000   Code   RO         6304    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x080001bc   0x00000000   Code   RO         6306    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x080001bc   0x00000004   Code   RO         6295    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x080001c0   0x00000024   Code   RO            4    .text               startup_stm32f429_439xx.o
-    0x080001e4   0x00000038   Code   RO         6153    .text               mc_w.l(__0sscanf.o)
-    0x0800021c   0x00000338   Code   RO         6155    .text               mc_w.l(scanf_fp.o)
-    0x08000554   0x0000002c   Code   RO         6174    .text               mc_w.l(uidiv.o)
-    0x08000580   0x00000028   Code   RO         6178    .text               mc_w.l(scanf_char.o)
-    0x080005a8   0x00000040   Code   RO         6180    .text               mc_w.l(_sgetc.o)
-    0x080005e8   0x00000000   Code   RO         6182    .text               mc_w.l(iusefp.o)
-    0x080005e8   0x000000e4   Code   RO         6185    .text               mf_w.l(dmul.o)
-    0x080006cc   0x000000de   Code   RO         6187    .text               mf_w.l(ddiv.o)
-    0x080007aa   0x00000018   Code   RO         6189    .text               mf_w.l(dfltul.o)
-    0x080007c2   0x00000038   Code   RO         6195    .text               mf_w.l(d2f.o)
+    0x080001e4   0x00000038   Code   RO         6288    .text               mc_w.l(__0sscanf.o)
+    0x0800021c   0x00000338   Code   RO         6290    .text               mc_w.l(scanf_fp.o)
+    0x08000554   0x0000002c   Code   RO         6309    .text               mc_w.l(uidiv.o)
+    0x08000580   0x00000028   Code   RO         6313    .text               mc_w.l(scanf_char.o)
+    0x080005a8   0x00000040   Code   RO         6315    .text               mc_w.l(_sgetc.o)
+    0x080005e8   0x00000000   Code   RO         6317    .text               mc_w.l(iusefp.o)
+    0x080005e8   0x000000e4   Code   RO         6320    .text               mf_w.l(dmul.o)
+    0x080006cc   0x000000de   Code   RO         6322    .text               mf_w.l(ddiv.o)
+    0x080007aa   0x00000018   Code   RO         6324    .text               mf_w.l(dfltul.o)
+    0x080007c2   0x00000038   Code   RO         6330    .text               mf_w.l(d2f.o)
     0x080007fa   0x00000002   PAD
-    0x080007fc   0x00000024   Code   RO         6197    .text               mc_w.l(init.o)
-    0x08000820   0x0000001e   Code   RO         6199    .text               mc_w.l(llshl.o)
-    0x0800083e   0x00000020   Code   RO         6201    .text               mc_w.l(llushr.o)
-    0x0800085e   0x0000000a   Code   RO         6205    .text               mc_w.l(isspace_c.o)
-    0x08000868   0x0000032c   Code   RO         6207    .text               mc_w.l(_scanf.o)
-    0x08000b94   0x0000006e   Code   RO         6209    .text               mf_w.l(fepilogue.o)
-    0x08000c02   0x000000ba   Code   RO         6211    .text               mf_w.l(depilogue.o)
-    0x08000cbc   0x00000028   Code   RO         6213    .text               mc_w.l(ctype_c.o)
-    0x08000ce4   0x000000a4   Code   RO         5783    i.ALT_Config        usart_alt.o
-    0x08000d88   0x00000024   Code   RO         5784    i.ALT_Init          usart_alt.o
-    0x08000dac   0x00000028   Code   RO         5785    i.ALT_NVIC_Configuration  usart_alt.o
-    0x08000dd4   0x00000064   Code   RO         5786    i.ALT_Task          usart_alt.o
-    0x08000e38   0x00000030   Code   RO         5787    i.ALT_TxCmd         usart_alt.o
-    0x08000e68   0x00000002   Code   RO         5218    i.BusFault_Handler  stm32f4xx_it.o
+    0x080007fc   0x00000024   Code   RO         6332    .text               mc_w.l(init.o)
+    0x08000820   0x0000001e   Code   RO         6334    .text               mc_w.l(llshl.o)
+    0x0800083e   0x00000020   Code   RO         6336    .text               mc_w.l(llushr.o)
+    0x0800085e   0x0000000a   Code   RO         6340    .text               mc_w.l(isspace_c.o)
+    0x08000868   0x0000032c   Code   RO         6342    .text               mc_w.l(_scanf.o)
+    0x08000b94   0x0000006e   Code   RO         6344    .text               mf_w.l(fepilogue.o)
+    0x08000c02   0x000000ba   Code   RO         6346    .text               mf_w.l(depilogue.o)
+    0x08000cbc   0x00000028   Code   RO         6348    .text               mc_w.l(ctype_c.o)
+    0x08000ce4   0x000000a4   Code   RO         5912    i.ALT_Config        usart_alt.o
+    0x08000d88   0x00000024   Code   RO         5913    i.ALT_Init          usart_alt.o
+    0x08000dac   0x00000028   Code   RO         5914    i.ALT_NVIC_Configuration  usart_alt.o
+    0x08000dd4   0x00000064   Code   RO         5915    i.ALT_Task          usart_alt.o
+    0x08000e38   0x00000030   Code   RO         5916    i.ALT_TxCmd         usart_alt.o
+    0x08000e68   0x00000002   Code   RO         5328    i.BusFault_Handler  stm32f4xx_it.o
     0x08000e6a   0x00000002   PAD
-    0x08000e6c   0x000000a8   Code   RO         5588    i.CPT_Config        usart_cpt.o
-    0x08000f14   0x00000038   Code   RO         5589    i.CPT_Init          usart_cpt.o
-    0x08000f4c   0x00000028   Code   RO         5590    i.CPT_NVIC_Configuration  usart_cpt.o
-    0x08000f74   0x00000064   Code   RO         5591    i.CPT_Task          usart_cpt.o
-    0x08000fd8   0x00000034   Code   RO         5592    i.CPT_TxCmd         usart_cpt.o
-    0x0800100c   0x00000028   Code   RO         5324    i.CRC16             modbus_svr.o
-    0x08001034   0x000000a4   Code   RO         5841    i.DPT_Config        usart_dpt.o
-    0x080010d8   0x00000024   Code   RO         5842    i.DPT_Init          usart_dpt.o
-    0x080010fc   0x00000028   Code   RO         5843    i.DPT_NVIC_Configuration  usart_dpt.o
-    0x08001124   0x0000013c   Code   RO         5844    i.DPT_Task          usart_dpt.o
-    0x08001260   0x00000002   Code   RO         5219    i.DebugMon_Handler  stm32f4xx_it.o
+    0x08000e6c   0x000000a8   Code   RO         5711    i.CPT_Config        usart_cpt.o
+    0x08000f14   0x00000038   Code   RO         5712    i.CPT_Init          usart_cpt.o
+    0x08000f4c   0x00000028   Code   RO         5713    i.CPT_NVIC_Configuration  usart_cpt.o
+    0x08000f74   0x00000064   Code   RO         5714    i.CPT_Task          usart_cpt.o
+    0x08000fd8   0x00000034   Code   RO         5715    i.CPT_TxCmd         usart_cpt.o
+    0x0800100c   0x00000028   Code   RO         5437    i.CRC16             modbus_svr.o
+    0x08001034   0x000000a4   Code   RO         5973    i.DPT_Config        usart_dpt.o
+    0x080010d8   0x00000024   Code   RO         5974    i.DPT_Init          usart_dpt.o
+    0x080010fc   0x00000028   Code   RO         5975    i.DPT_NVIC_Configuration  usart_dpt.o
+    0x08001124   0x0000013c   Code   RO         5976    i.DPT_Task          usart_dpt.o
+    0x08001260   0x00000002   Code   RO         5329    i.DebugMon_Handler  stm32f4xx_it.o
     0x08001262   0x00000002   PAD
-    0x08001264   0x0000004c   Code   RO         5325    i.Error_response    modbus_svr.o
+    0x08001264   0x0000004c   Code   RO         5438    i.Error_response    modbus_svr.o
     0x080012b0   0x0000000c   Code   RO         1550    i.FLASH_ClearFlag   stm32f4xx_flash.o
     0x080012bc   0x00000070   Code   RO         1556    i.FLASH_EraseSector  stm32f4xx_flash.o
     0x0800132c   0x0000003c   Code   RO         1558    i.FLASH_GetStatus   stm32f4xx_flash.o
@@ -2368,118 +2373,118 @@ Memory Map of the image
     0x080013b4   0x00000024   Code   RO         1588    i.FLASH_Unlock      stm32f4xx_flash.o
     0x080013d8   0x00000022   Code   RO         1589    i.FLASH_WaitForLastOperation  stm32f4xx_flash.o
     0x080013fa   0x00000002   PAD
-    0x080013fc   0x000000bc   Code   RO         5523    i.Flash_GetSector   bsp_innerflash.o
-    0x080014b8   0x00000018   Code   RO         5524    i.Flash_Read16BitDatas  bsp_innerflash.o
-    0x080014d0   0x00000064   Code   RO         5527    i.Flash_Write16BitDatas  bsp_innerflash.o
-    0x08001534   0x00000054   Code   RO         5287    i.GPIO_Config       gpio.o
+    0x080013fc   0x000000bc   Code   RO         5643    i.Flash_GetSector   bsp_innerflash.o
+    0x080014b8   0x00000018   Code   RO         5644    i.Flash_Read16BitDatas  bsp_innerflash.o
+    0x080014d0   0x00000064   Code   RO         5647    i.Flash_Write16BitDatas  bsp_innerflash.o
+    0x08001534   0x00000054   Code   RO         5397    i.GPIO_Config       gpio.o
     0x08001588   0x0000007c   Code   RO         2046    i.GPIO_Init         stm32f4xx_gpio.o
     0x08001604   0x00000020   Code   RO         2047    i.GPIO_PinAFConfig  stm32f4xx_gpio.o
     0x08001624   0x00000004   Code   RO         2054    i.GPIO_SetBits      stm32f4xx_gpio.o
-    0x08001628   0x0000000c   Code   RO         5460    i.GetCurTicks       systick.o
-    0x08001634   0x0000001c   Code   RO         5461    i.GetTimer          systick.o
-    0x08001650   0x00000002   Code   RO         5220    i.HardFault_Handler  stm32f4xx_it.o
-    0x08001652   0x00000024   Code   RO         5288    i.IWDG_Configuration  gpio.o
+    0x08001628   0x0000000c   Code   RO         5576    i.GetCurTicks       systick.o
+    0x08001634   0x0000001c   Code   RO         5577    i.GetTimer          systick.o
+    0x08001650   0x00000002   Code   RO         5330    i.HardFault_Handler  stm32f4xx_it.o
+    0x08001652   0x00000024   Code   RO         5398    i.IWDG_Configuration  gpio.o
     0x08001676   0x00000002   PAD
-    0x08001678   0x00000010   Code   RO         2561    i.IWDG_Enable       stm32f4xx_iwdg.o
-    0x08001688   0x00000010   Code   RO         5289    i.IWDG_Feed         gpio.o
-    0x08001698   0x00000010   Code   RO         2563    i.IWDG_ReloadCounter  stm32f4xx_iwdg.o
-    0x080016a8   0x0000000c   Code   RO         2564    i.IWDG_SetPrescaler  stm32f4xx_iwdg.o
-    0x080016b4   0x0000000c   Code   RO         2565    i.IWDG_SetReload    stm32f4xx_iwdg.o
-    0x080016c0   0x0000000c   Code   RO         2566    i.IWDG_WriteAccessCmd  stm32f4xx_iwdg.o
-    0x080016cc   0x000000a8   Code   RO         5326    i.MODBUS_Config     modbus_svr.o
-    0x08001774   0x00000026   Code   RO         5327    i.MODBUS_NVIC_Configuration  modbus_svr.o
-    0x0800179a   0x00000002   Code   RO         5221    i.MemManage_Handler  stm32f4xx_it.o
-    0x0800179c   0x00000010   Code   RO         5328    i.ModbusTimer       modbus_svr.o
-    0x080017ac   0x00000230   Code   RO         5329    i.Modbus_Procotol_Chain  modbus_svr.o
-    0x080019dc   0x00000098   Code   RO         5330    i.Modbus_init       modbus_svr.o
-    0x08001a74   0x00000058   Code   RO         5331    i.Modbus_task       modbus_svr.o
-    0x08001acc   0x00000002   Code   RO         5222    i.NMI_Handler       stm32f4xx_it.o
+    0x08001678   0x00000010   Code   RO         2671    i.IWDG_Enable       stm32f4xx_iwdg.o
+    0x08001688   0x00000010   Code   RO         5399    i.IWDG_Feed         gpio.o
+    0x08001698   0x00000010   Code   RO         2673    i.IWDG_ReloadCounter  stm32f4xx_iwdg.o
+    0x080016a8   0x0000000c   Code   RO         2674    i.IWDG_SetPrescaler  stm32f4xx_iwdg.o
+    0x080016b4   0x0000000c   Code   RO         2675    i.IWDG_SetReload    stm32f4xx_iwdg.o
+    0x080016c0   0x0000000c   Code   RO         2676    i.IWDG_WriteAccessCmd  stm32f4xx_iwdg.o
+    0x080016cc   0x000000a8   Code   RO         5439    i.MODBUS_Config     modbus_svr.o
+    0x08001774   0x00000026   Code   RO         5440    i.MODBUS_NVIC_Configuration  modbus_svr.o
+    0x0800179a   0x00000002   Code   RO         5331    i.MemManage_Handler  stm32f4xx_it.o
+    0x0800179c   0x00000010   Code   RO         5441    i.ModbusTimer       modbus_svr.o
+    0x080017ac   0x00000230   Code   RO         5442    i.Modbus_Procotol_Chain  modbus_svr.o
+    0x080019dc   0x00000098   Code   RO         5443    i.Modbus_init       modbus_svr.o
+    0x08001a74   0x00000058   Code   RO         5444    i.Modbus_task       modbus_svr.o
+    0x08001acc   0x00000002   Code   RO         5332    i.NMI_Handler       stm32f4xx_it.o
     0x08001ace   0x00000002   PAD
     0x08001ad0   0x00000068   Code   RO          164    i.NVIC_Init         misc.o
     0x08001b38   0x00000014   Code   RO          165    i.NVIC_PriorityGroupConfig  misc.o
-    0x08001b4c   0x00000054   Code   RO         5332    i.Normal_response   modbus_svr.o
-    0x08001ba0   0x00000002   Code   RO         5223    i.PendSV_Handler    stm32f4xx_it.o
+    0x08001b4c   0x00000054   Code   RO         5445    i.Normal_response   modbus_svr.o
+    0x08001ba0   0x00000002   Code   RO         5333    i.PendSV_Handler    stm32f4xx_it.o
     0x08001ba2   0x00000002   PAD
-    0x08001ba4   0x0000001c   Code   RO         2960    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x08001bc0   0x0000001c   Code   RO         2969    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
-    0x08001bdc   0x0000001c   Code   RO         2972    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
-    0x08001bf8   0x000000a4   Code   RO         2981    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
-    0x08001c9c   0x000000a4   Code   RO         5708    i.SPD_Config        usart_spd.o
-    0x08001d40   0x00000044   Code   RO         5709    i.SPD_Init          usart_spd.o
-    0x08001d84   0x00000028   Code   RO         5710    i.SPD_NVIC_Configuration  usart_spd.o
-    0x08001dac   0x000000b8   Code   RO         5711    i.SPD_Task          usart_spd.o
-    0x08001e64   0x00000034   Code   RO         5712    i.SPD_TxCmd         usart_spd.o
-    0x08001e98   0x00000002   Code   RO         5224    i.SVC_Handler       stm32f4xx_it.o
+    0x08001ba4   0x0000001c   Code   RO         3070    i.RCC_AHB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x08001bc0   0x0000001c   Code   RO         3079    i.RCC_APB1PeriphClockCmd  stm32f4xx_rcc.o
+    0x08001bdc   0x0000001c   Code   RO         3082    i.RCC_APB2PeriphClockCmd  stm32f4xx_rcc.o
+    0x08001bf8   0x000000a4   Code   RO         3091    i.RCC_GetClocksFreq  stm32f4xx_rcc.o
+    0x08001c9c   0x000000a4   Code   RO         5834    i.SPD_Config        usart_spd.o
+    0x08001d40   0x00000044   Code   RO         5835    i.SPD_Init          usart_spd.o
+    0x08001d84   0x00000028   Code   RO         5836    i.SPD_NVIC_Configuration  usart_spd.o
+    0x08001dac   0x000000b8   Code   RO         5837    i.SPD_Task          usart_spd.o
+    0x08001e64   0x00000034   Code   RO         5838    i.SPD_TxCmd         usart_spd.o
+    0x08001e98   0x00000002   Code   RO         5334    i.SVC_Handler       stm32f4xx_it.o
     0x08001e9a   0x00000002   PAD
     0x08001e9c   0x000000d4   Code   RO           13    i.SetSysClock       system_stm32f4xx.o
-    0x08001f70   0x00000018   Code   RO         5462    i.SetTimer          systick.o
-    0x08001f88   0x0000001a   Code   RO         5713    i.SpdQueueAvgVal    usart_spd.o
-    0x08001fa2   0x00000040   Code   RO         5714    i.SpdQueueIn        usart_spd.o
-    0x08001fe2   0x0000001c   Code   RO         5715    i.SpdQueueInit      usart_spd.o
+    0x08001f70   0x00000018   Code   RO         5578    i.SetTimer          systick.o
+    0x08001f88   0x0000001a   Code   RO         5839    i.SpdQueueAvgVal    usart_spd.o
+    0x08001fa2   0x00000040   Code   RO         5840    i.SpdQueueIn        usart_spd.o
+    0x08001fe2   0x0000001c   Code   RO         5841    i.SpdQueueInit      usart_spd.o
     0x08001ffe   0x00000002   PAD
-    0x08002000   0x0000005c   Code   RO         5463    i.SysTick_Handler   systick.o
-    0x0800205c   0x00000068   Code   RO         5464    i.SysTick_Init      systick.o
+    0x08002000   0x0000005c   Code   RO         5579    i.SysTick_Handler   systick.o
+    0x0800205c   0x00000068   Code   RO         5580    i.SysTick_Init      systick.o
     0x080020c4   0x0000005c   Code   RO           15    i.SystemInit        system_stm32f4xx.o
-    0x08002120   0x00000050   Code   RO         5593    i.UART4_IRQHandler  usart_cpt.o
-    0x08002170   0x00000050   Code   RO         5716    i.UART7_IRQHandler  usart_spd.o
-    0x080021c0   0x00000068   Code   RO         5334    i.USART1_IRQHandler  modbus_svr.o
-    0x08002228   0x00000050   Code   RO         5645    i.USART2_IRQHandler  usart_van.o
-    0x08002278   0x00000094   Code   RO         5845    i.USART3_IRQHandler  usart_dpt.o
-    0x0800230c   0x00000068   Code   RO         5788    i.USART6_IRQHandler  usart_alt.o
-    0x08002374   0x00000018   Code   RO         4907    i.USART_Cmd         stm32f4xx_usart.o
-    0x0800238c   0x0000000e   Code   RO         4910    i.USART_GetFlagStatus  stm32f4xx_usart.o
-    0x0800239a   0x00000040   Code   RO         4911    i.USART_GetITStatus  stm32f4xx_usart.o
-    0x080023da   0x00000036   Code   RO         4913    i.USART_ITConfig    stm32f4xx_usart.o
-    0x08002410   0x000000bc   Code   RO         4914    i.USART_Init        stm32f4xx_usart.o
-    0x080024cc   0x00000008   Code   RO         4921    i.USART_ReceiveData  stm32f4xx_usart.o
-    0x080024d4   0x00000008   Code   RO         4924    i.USART_SendData    stm32f4xx_usart.o
-    0x080024dc   0x00000002   Code   RO         5225    i.UsageFault_Handler  stm32f4xx_it.o
-    0x080024de   0x00000018   Code   RO         5335    i.Usart_SendByte    modbus_svr.o
-    0x080024f6   0x0000002e   Code   RO         5336    i.Usart_SendBytes   modbus_svr.o
-    0x08002524   0x00000026   Code   RO         5338    i.Usart_SendString  modbus_svr.o
+    0x08002120   0x00000050   Code   RO         5716    i.UART4_IRQHandler  usart_cpt.o
+    0x08002170   0x00000050   Code   RO         5842    i.UART7_IRQHandler  usart_spd.o
+    0x080021c0   0x00000068   Code   RO         5447    i.USART1_IRQHandler  modbus_svr.o
+    0x08002228   0x00000050   Code   RO         5771    i.USART2_IRQHandler  usart_van.o
+    0x08002278   0x00000094   Code   RO         5977    i.USART3_IRQHandler  usart_dpt.o
+    0x0800230c   0x00000068   Code   RO         5917    i.USART6_IRQHandler  usart_alt.o
+    0x08002374   0x00000018   Code   RO         5017    i.USART_Cmd         stm32f4xx_usart.o
+    0x0800238c   0x0000000e   Code   RO         5020    i.USART_GetFlagStatus  stm32f4xx_usart.o
+    0x0800239a   0x00000040   Code   RO         5021    i.USART_GetITStatus  stm32f4xx_usart.o
+    0x080023da   0x00000036   Code   RO         5023    i.USART_ITConfig    stm32f4xx_usart.o
+    0x08002410   0x000000bc   Code   RO         5024    i.USART_Init        stm32f4xx_usart.o
+    0x080024cc   0x00000008   Code   RO         5031    i.USART_ReceiveData  stm32f4xx_usart.o
+    0x080024d4   0x00000008   Code   RO         5034    i.USART_SendData    stm32f4xx_usart.o
+    0x080024dc   0x00000002   Code   RO         5335    i.UsageFault_Handler  stm32f4xx_it.o
+    0x080024de   0x00000018   Code   RO         5448    i.Usart_SendByte    modbus_svr.o
+    0x080024f6   0x0000002e   Code   RO         5449    i.Usart_SendBytes   modbus_svr.o
+    0x08002524   0x00000026   Code   RO         5451    i.Usart_SendString  modbus_svr.o
     0x0800254a   0x00000002   PAD
-    0x0800254c   0x000000a4   Code   RO         5646    i.VAN_Config        usart_van.o
-    0x080025f0   0x00000024   Code   RO         5647    i.VAN_Init          usart_van.o
-    0x08002614   0x00000028   Code   RO         5648    i.VAN_NVIC_Configuration  usart_van.o
-    0x0800263c   0x000000a8   Code   RO         5649    i.VAN_Task          usart_van.o
-    0x080026e4   0x00000074   Code   RO         5650    i.VAN_TransData     usart_van.o
-    0x08002758   0x00000070   Code   RO         5651    i.VAN_TxCmd         usart_van.o
-    0x080027c8   0x00000028   Code   RO         5939    i.__0sprintf$1      mc_w.l(printf1.o)
-    0x080027f0   0x0000000e   Code   RO         6218    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x080027fe   0x00000002   Code   RO         6219    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08002800   0x0000000e   Code   RO         6220    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x0800280e   0x0000000e   Code   RO         6157    i._is_digit         mc_w.l(scanf_fp.o)
-    0x0800281c   0x00000154   Code   RO         5944    i._printf_core      mc_w.l(printf1.o)
-    0x08002970   0x0000000a   Code   RO         5946    i._sputc            mc_w.l(printf1.o)
-    0x0800297a   0x00000002   PAD
-    0x0800297c   0x000000d8   Code   RO         5161    i.main              main.o
-    0x08002a54   0x00000200   Data   RO         5344    .constdata          modbus_svr.o
-    0x08002c54   0x00000040   Data   RO         6214    .constdata          mc_w.l(ctype_c.o)
-    0x08002c94   0x00000020   Data   RO         6216    Region$$Table       anon$$obj.o
+    0x0800254c   0x000000a4   Code   RO         5772    i.VAN_Config        usart_van.o
+    0x080025f0   0x00000038   Code   RO         5773    i.VAN_Init          usart_van.o
+    0x08002628   0x00000028   Code   RO         5774    i.VAN_NVIC_Configuration  usart_van.o
+    0x08002650   0x000000e8   Code   RO         5775    i.VAN_Task          usart_van.o
+    0x08002738   0x00000080   Code   RO         5776    i.VAN_TransData     usart_van.o
+    0x080027b8   0x000000a0   Code   RO         5777    i.VAN_TxCmd         usart_van.o
+    0x08002858   0x00000028   Code   RO         6074    i.__0sprintf$1      mc_w.l(printf1.o)
+    0x08002880   0x0000000e   Code   RO         6353    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800288e   0x00000002   Code   RO         6354    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08002890   0x0000000e   Code   RO         6355    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x0800289e   0x0000000e   Code   RO         6292    i._is_digit         mc_w.l(scanf_fp.o)
+    0x080028ac   0x00000154   Code   RO         6079    i._printf_core      mc_w.l(printf1.o)
+    0x08002a00   0x0000000a   Code   RO         6081    i._sputc            mc_w.l(printf1.o)
+    0x08002a0a   0x00000002   PAD
+    0x08002a0c   0x000000d8   Code   RO         5271    i.main              main.o
+    0x08002ae4   0x00000200   Data   RO         5457    .constdata          modbus_svr.o
+    0x08002ce4   0x00000040   Data   RO         6349    .constdata          mc_w.l(ctype_c.o)
+    0x08002d24   0x00000020   Data   RO         6351    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000f28, Max: 0x00030000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000f38, Max: 0x00030000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000014   Data   RW           16    .data               system_stm32f4xx.o
-    0x20000014   0x00000010   Data   RW         3013    .data               stm32f4xx_rcc.o
-    0x20000024   0x00000014   Data   RW         5345    .data               modbus_svr.o
-    0x20000038   0x00000008   Data   RW         5466    .data               systick.o
-    0x20000040   0x00000010   Data   RW         5595    .data               usart_cpt.o
-    0x20000050   0x00000010   Data   RW         5653    .data               usart_van.o
-    0x20000060   0x00000010   Data   RW         5718    .data               usart_spd.o
-    0x20000070   0x0000000c   Data   RW         5790    .data               usart_alt.o
-    0x2000007c   0x00000024   Data   RW         5847    .data               usart_dpt.o
-    0x200000a0   0x00000520   Zero   RW         5341    .bss                modbus_svr.o
-    0x200005c0   0x00000032   Zero   RW         5465    .bss                systick.o
-    0x200005f2   0x00000100   Zero   RW         5594    .bss                usart_cpt.o
-    0x200006f2   0x00000100   Zero   RW         5652    .bss                usart_van.o
-    0x200007f2   0x00000002   PAD
-    0x200007f4   0x00000134   Zero   RW         5717    .bss                usart_spd.o
-    0x20000928   0x00000100   Zero   RW         5789    .bss                usart_alt.o
-    0x20000a28   0x00000100   Zero   RW         5846    .bss                usart_dpt.o
-    0x20000b28   0x00000400   Zero   RW            1    STACK               startup_stm32f429_439xx.o
+    0x20000014   0x00000010   Data   RW         3123    .data               stm32f4xx_rcc.o
+    0x20000024   0x00000014   Data   RW         5458    .data               modbus_svr.o
+    0x20000038   0x00000008   Data   RW         5582    .data               systick.o
+    0x20000040   0x00000010   Data   RW         5718    .data               usart_cpt.o
+    0x20000050   0x00000020   Data   RW         5779    .data               usart_van.o
+    0x20000070   0x00000010   Data   RW         5844    .data               usart_spd.o
+    0x20000080   0x0000000c   Data   RW         5919    .data               usart_alt.o
+    0x2000008c   0x00000024   Data   RW         5979    .data               usart_dpt.o
+    0x200000b0   0x00000520   Zero   RW         5454    .bss                modbus_svr.o
+    0x200005d0   0x00000032   Zero   RW         5581    .bss                systick.o
+    0x20000602   0x00000100   Zero   RW         5717    .bss                usart_cpt.o
+    0x20000702   0x00000100   Zero   RW         5778    .bss                usart_van.o
+    0x20000802   0x00000002   PAD
+    0x20000804   0x00000134   Zero   RW         5843    .bss                usart_spd.o
+    0x20000938   0x00000100   Zero   RW         5918    .bss                usart_alt.o
+    0x20000a38   0x00000100   Zero   RW         5978    .bss                usart_dpt.o
+    0x20000b38   0x00000400   Zero   RW            1    STACK               startup_stm32f429_439xx.o
 
 
 ==============================================================================
@@ -2491,26 +2496,26 @@ Image component sizes
 
        312         42          0          0          0       2677   bsp_innerflash.o
        136         12          0          0          0       1519   gpio.o
-       216         20          0          0          0       1775   main.o
-       124         16          0          0          0       1823   misc.o
+       216         20          0          0          0        623   main.o
+       124         16          0          0          0       1835   misc.o
       1434        136        512         20       1312      10418   modbus_svr.o
-        36          8        428          0       1024        980   startup_stm32f429_439xx.o
-       330         38          0          0          0       5249   stm32f4xx_flash.o
-       160          0          0          0          0       2630   stm32f4xx_gpio.o
+        36          8        428          0       1024        984   startup_stm32f429_439xx.o
+       330         38          0          0          0       5285   stm32f4xx_flash.o
+       160          0          0          0          0     272534   stm32f4xx_gpio.o
         16          0          0          0          0       3772   stm32f4xx_it.o
         68         30          0          0          0       2910   stm32f4xx_iwdg.o
        248         34          0         16          0       5243   stm32f4xx_rcc.o
        360          8          0          0          0       6345   stm32f4xx_usart.o
-       304         34          0         20          0     285741   system_stm32f4xx.o
+       304         34          0         20          0     270405   system_stm32f4xx.o
        260         42          0          8         50      30107   systick.o
        492         64          0         12        256       4187   usart_alt.o
        496         58          0         16        256       4297   usart_cpt.o
        704         92          0         36        256       4156   usart_dpt.o
-       706         66          0         16        308       6171   usart_spd.o
-       716         70          0         16        256       5250   usart_van.o
+       706         66          0         16        308       7327   usart_spd.o
+       860         78          0         32        256       5604   usart_van.o
 
     ----------------------------------------------------------------------
-      7136        770        972        160       3720     385250   Object Totals
+      7280        778        972        176       3720     640228   Object Totals
          0          0         32          0          0          0   (incl. Generated)
         18          0          0          0          2          0   (incl. Padding)
 
@@ -2568,15 +2573,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     10408        834       1036        160       3720     377474   Grand Totals
-     10408        834       1036        160       3720     377474   ELF Image Totals
-     10408        834       1036        160          0          0   ROM Totals
+     10552        842       1036        176       3720     632452   Grand Totals
+     10552        842       1036        176       3720     632452   ELF Image Totals
+     10552        842       1036        176          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                11444 (  11.18kB)
-    Total RW  Size (RW Data + ZI Data)              3880 (   3.79kB)
-    Total ROM Size (Code + RO Data + RW Data)      11604 (  11.33kB)
+    Total RO  Size (Code + RO Data)                11588 (  11.32kB)
+    Total RW  Size (RW Data + ZI Data)              3896 (   3.80kB)
+    Total ROM Size (Code + RO Data + RW Data)      11764 (  11.49kB)
 
 ==============================================================================
 

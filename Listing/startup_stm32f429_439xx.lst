@@ -894,13 +894,13 @@ ARM Macro Assembler    Page 14
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=..\..\output\startup_stm32f429_439xx.d -o..\..\output\startup_s
-tm32f429_439xx.o -IF:\SBC\Situ_sen-master-20190618\Project\RVMDK£¨uv5£©\RTE -ID
-:\Program\Keil\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0 -ID:\Program\Keil\ARM\CMSIS\In
-clude -ID:\Program\Keil\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\Device\
-ST\STM32F4xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISION_VER
-SION SETA 514" --predefine="STM32F429xx SETA 1" --list=..\..\listing\startup_st
-m32f429_439xx.lst ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templates\ar
-m\startup_stm32f429_439xx.s
+tm32f429_439xx.o -IF:\SBC\SITU\Situ_sen-master-20190618\Project\RVMDK£¨uv5£©\RT
+E -ID:\Program\Keil\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0 -ID:\Program\Keil\ARM\CMS
+IS\Include -ID:\Program\Keil\ARM\PACK\Keil\STM32F4xx_DFP\2.5.0\Drivers\CMSIS\De
+vice\ST\STM32F4xx\Include --predefine="__MICROLIB SETA 1" --predefine="__UVISIO
+N_VERSION SETA 514" --predefine="STM32F429xx SETA 1" --list=..\..\listing\start
+up_stm32f429_439xx.lst ..\..\Libraries\CMSIS\Device\ST\STM32F4xx\Source\Templat
+es\arm\startup_stm32f429_439xx.s
 
 
 
